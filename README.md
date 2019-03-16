@@ -1,5 +1,5 @@
 # Why Sails.js
-
+utbildande och/eller förhålla dig mer nyanserat till teknikerna men samtidigt förklara dess för- och nackdelar i ett sammanhang. Ett balanserat inlägg ger troligen bättre effekt i ditt arbetsteam. 
 ### About sails
 [![N|Solid](https://sailsjs.com/images/logos/sails-logo_ltBg_ltBlue.png)](https://nodesource.com/products/nsolid)
 
