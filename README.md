@@ -1,9 +1,10 @@
 # Why Sails.js
 utbildande och/eller förhålla dig mer nyanserat till teknikerna men samtidigt förklara dess för- och nackdelar i ett sammanhang. Ett balanserat inlägg ger troligen bättre effekt i ditt arbetsteam. 
 ### About sails
+##### Sails.js is a Realtime MVC framework for Node.js.
 [![N|Solid](https://sailsjs.com/images/logos/sails-logo_ltBg_ltBlue.png)](https://nodesource.com/products/nsolid)
 
-Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.
+
 
   - Type some Markdown on the left
   - See HTML in the right
@@ -11,9 +12,15 @@ Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered H
 
 
 ### Any databse ORM
+Having the ability to seemlessly change between different databases I choose to build mine in MongoDb and use the built in document database for the testing. There is a long list of available database adapters 
+- [Official](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?officiallysupported-database-adapters)
+- [Community](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?communitysupported-database-adapters)
+
+I found it very easy to switch between the databases and Im sure you will aswell. The only thing Ive had a hard time with was to make it work with SQLITE3, I managed eventuelly but it wasnt an easy setup like the rest of the databases.
 
 ### Auto-generated REST Api
 
+### Websocket integration
 
 You can also:
   - Import and save files from GitHub, Dropbox, Google Drive and One Drive
