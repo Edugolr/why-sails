@@ -1,188 +1,122 @@
 # Why Sails.js
-utbildande och/eller förhålla dig mer nyanserat till teknikerna men samtidigt förklara dess för- och nackdelar i ett sammanhang. Ett balanserat inlägg ger troligen bättre effekt i ditt arbetsteam. 
-### About sails
-##### Sails.js is a Realtime MVC framework for Node.js.
 [![N|Solid](https://sailsjs.com/images/logos/sails-logo_ltBg_ltBlue.png)](https://nodesource.com/products/nsolid)
+### About sails
 
+ #### What
+ Sails.js is a Realtime MVC backend framework for Node.js.
+ #### Who 
+ The Sails framework was developed by Mike McNeil to assist his team in building scalable Node.js projects for startup and enterprise customers. Since its release in 2012, Sails has become one of the most widely-used web application frameworks in the world.
+ #### Users
+ There are alot of big names using Sails.js, Im just gonna give you a few in this list and then you can check it out more if you want to at this link [Sails](https://sailsjs.com/)
+ - [Microsoft](https://www.microsoft.com/en-us/)
+ - [Verizon](https://www.verizonwireless.com/)
+ - [Postman](https://www.getpostman.com/)
+ - [American Eagle](https://www.ae.com/international?cm=sSE-cSEK)
+ - [Philips](https://www.usa.philips.com/)
+ 
 
+### Any database SQL/NoSQL ORM/ODM
 
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
-
-
-### Any databse ORM
 Having the ability to seemlessly change between different databases I choose to build mine in MongoDb and use the built in document database for the testing. There is a long list of available database adapters 
 - [Official](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?officiallysupported-database-adapters)
 - [Community](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?communitysupported-database-adapters)
 
 I found it very easy to switch between the databases and Im sure you will aswell. The only thing Ive had a hard time with was to make it work with SQLITE3, I managed eventuelly but it wasnt an easy setup like the rest of the databases.
 
+Below is examples from my project, the first one where I implement MongoDb as the develop db
+```
+adapter: 'sails-mongo',
+url: 'mongodb://root@localhost/chai17Ramverk2Proj'
+```
+And this one for testing
+```
+adapter: 'sails-disk',
+```
+
 ### Auto-generated REST Api
+
+This is a very powerful but slightly dangerous function. When I started to use Sails.js I did not know about this or how it worked, leaving my databse very open on all routes to read write and update as u please. However with knowledge comes power and with power great responsibility, or something alike. When you know about it and how it works, it is a great asset. 
+Simply by using Sails CLI you can write
+
+```
+sails generate api User
+```
+
+This will create the Model: User and the Controller: UserController along with the RESTApi routes to handle the Model. 
+
+- [add to](https://sailsjs.com/documentation/reference/blueprint-api/add-to)
+- [create](https://sailsjs.com/documentation/reference/blueprint-api/create)
+- [destroy](https://sailsjs.com/documentation/reference/blueprint-api/destroy)
+- [find one](https://sailsjs.com/documentation/reference/blueprint-api/find-one)
+- [find where](https://sailsjs.com/documentation/reference/blueprint-api/find-where)
+- [populate where](https://sailsjs.com/documentation/reference/blueprint-api/populate-where)
+- [remove from](https://sailsjs.com/documentation/reference/blueprint-api/remove-from)
+- [update](https://sailsjs.com/documentation/reference/blueprint-api/update)
+
+Model example, where attributes (or database columns if you like to look at it that way) has been added. 
+```
+//User Model
+
+module.exports = {
+    
+    attributes: {
+        firstname: {
+            type: 'string',
+            required: true
+        },
+        lastname: {
+            type: 'string'
+        },
+        email: {
+            type: 'string',
+            isEmail: true,
+            unique: true,
+            required: true
+        }
+}
+```
+
 
 ### Websocket integration
 
-You can also:
-  - Import and save files from GitHub, Dropbox, Google Drive and One Drive
-  - Drag and drop markdown and HTML files into Dillinger
-  - Export documents as Markdown, HTML and PDF
+more magic coming up. Remember I told you about how things happened without me knowing it when I created my Model/Controller earlier. Well this happened aswell. How smooth is this ?
+Simply make a get request on the route and you are hooked up on the websocket.
+Simple as this,atleast most times:
+Add a listener to the User model we created earlier.
+```
+io.socket.on('user', function(msg){
+  console.log(msg);
+})
+```
+Make a get request through io.socket.get on the route and you are subscribed.
 
-Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site][df1]
-
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
-
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
-
-### Tech
-
-Dillinger uses a number of open source projects to work properly:
-
-* [AngularJS] - HTML enhanced for web apps!
-* [Ace Editor] - awesome web-based text editor
-* [markdown-it] - Markdown parser done right. Fast and easy to extend.
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [Gulp] - the streaming build system
-* [Breakdance](http://breakdance.io) - HTML to Markdown converter
-* [jQuery] - duh
-
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
-
-### Installation
-
-Dillinger requires [Node.js](https://nodejs.org/) v4+ to run.
-
-Install the dependencies and devDependencies and start the server.
-
-```sh
-$ cd dillinger
-$ npm install -d
-$ node app
+```
+io.socket.get('/user', function(resData) {
+  console.log(resData);
+});
 ```
 
-For production environments...
+Lets say someone would make a create on the Model User, then you would receive something like this in your log: 
 
-```sh
-$ npm install --production
-$ NODE_ENV=production node app
+```
+{
+    verb: 'created',
+  id: 1,
+  data: {
+    id: 1,
+    firstname: 'joe',
+    lastname: 'Joesson',
+    email: joejoe@email.com
+    createdAt: '2014-08-01T05:50:19.855Z'
+    updatedAt: '2014-08-01T05:50:19.855Z'
+  }
+}
 ```
 
-### Plugins
+How convenient, not only do you get the full info on the model, you also get what triggered the socket, in this case a create action.
 
-Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| Github | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
-
-
-### Development
-
-Want to contribute? Great!
-
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantanously see your updates!
-
-Open your favorite Terminal and run these commands.
-
-First Tab:
-```sh
-$ node app
-```
-
-Second Tab:
-```sh
-$ gulp watch
-```
-
-(optional) Third:
-```sh
-$ karma test
-```
-#### Building for source
-For production release:
-```sh
-$ gulp build --prod
-```
-Generating pre-built zip archives for distribution:
-```sh
-$ gulp build dist --prod
-```
-### Docker
-Dillinger is very easy to install and deploy in a Docker container.
-
-By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
-
-```sh
-cd dillinger
-docker build -t joemccann/dillinger:${package.json.version} .
-```
-This will create the dillinger image and pull in the necessary dependencies. Be sure to swap out `${package.json.version}` with the actual version of Dillinger.
-
-Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
-
-```sh
-docker run -d -p 8000:8080 --restart="always" <youruser>/dillinger:${package.json.version}
-```
-
-Verify the deployment by navigating to your server address in your preferred browser.
-
-```sh
-127.0.0.1:8000
-```
-
-#### Kubernetes + Google Cloud
-
-See [KUBERNETES.md](https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md)
-
-
-### Todos
-
- - Write MORE Tests
- - Add Night Mode
-
-License
-----
-
-MIT
-
-
-**Free Software, Hell Yeah!**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
-
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
-
-   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
-   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
-   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
-   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
-   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
+## Author
+Christofer Wikman 
+## Sources
+[Sails.js](https://sailsjs.com/)
 
