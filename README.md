@@ -117,7 +117,8 @@ How convenient, not only do you get the full info on the model, you also get wha
 
 ## Author
 Christofer Wikman 
-[![alt text][https://github.com/Edugolr/why-sails/blob/master/assets/icons%20with%20padding/facebook.png]][https://www.facebook.com/christofer.wikman]
+[![Facebook](http://i.imgur.com/P3YfQoD.png)](https://www.facebook.com/christofer.wikman)
+
 
 
 ## Sources
