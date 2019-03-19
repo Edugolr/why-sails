@@ -123,7 +123,7 @@ Christofer Wikman
 
 
 ## Sources
-[Sails.js](https://sailsjs.com/)
-[Sitepoint](https://www.sitepoint.com/an-introduction-to-sails-js/)
-[Wikipedia](https://en.wikipedia.org/wiki/Sails.js
+- [Sails.js](https://sailsjs.com/)
+- [Sitepoint](https://www.sitepoint.com/an-introduction-to-sails-js/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Sails.js)
 
