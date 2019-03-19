@@ -117,12 +117,9 @@ How convenient, not only do you get the full info on the model, you also get wha
 
 ## Author
 Christofer Wikman 
-[![alt text][1.1]][1]
-[![alt text][2.1]][2]
-[![alt text][3.1]][3]
-[![alt text][4.1]][4]
-[![alt text][5.1]][5]
-[![alt text][6.1]][6]
+[![alt text][http://i.imgur.com/P3YfQoD.png]][https://www.facebook.com/christofer.wikman]
+
+
 ## Sources
 [Sails.js](https://sailsjs.com/)
 
