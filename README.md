@@ -118,9 +118,13 @@ How convenient, not only do you get the full info on the model, you also get wha
 ## Author
 Christofer Wikman 
 [![Facebook](http://i.imgur.com/P3YfQoD.png)](https://www.facebook.com/christofer.wikman)
+[![Github](http://i.imgur.com/0o48UoR.png)](https://github.com/Edugolr)
+
 
 
 
 ## Sources
 [Sails.js](https://sailsjs.com/)
+[Sitepoint(https://www.sitepoint.com/an-introduction-to-sails-js/)
+[Wikipedia](https://en.wikipedia.org/wiki/Sails.js
 
