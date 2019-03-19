@@ -2,12 +2,12 @@
 [![N|Solid](https://sailsjs.com/images/logos/sails-logo_ltBg_ltBlue.png)](https://nodesource.com/products/nsolid)
 ### About sails
 
- #### What
- Sails.js is a Realtime MVC backend framework for Node.js.
- #### Who 
- The Sails framework was developed by Mike McNeil to assist his team in building scalable Node.js projects for startup and enterprise customers. Since its release in 2012, Sails has become one of the most widely-used web application frameworks in the world.
- #### Users
- There are alot of big names using Sails.js, Im just gonna give you a few in this list and then you can check it out more if you want to at this link [Sails](https://sailsjs.com/)
+#### What
+Sails.js is a Realtime MVC backend framework for Node.js.
+#### Who 
+The Sails framework was developed by Mike McNeil to assist his team in building scalable Node.js projects for startup and enterprise customers. Since its release in 2012, Sails has become one of the most widely-used web application frameworks in the world.
+#### Users
+There are alot of big names using Sails.js, Im just gonna give you a few in this list and then you can check it out more if you want to at this link [Sails](https://sailsjs.com/)
  - [Microsoft](https://www.microsoft.com/en-us/)
  - [Verizon](https://www.verizonwireless.com/)
  - [Postman](https://www.getpostman.com/)
@@ -117,6 +117,12 @@ How convenient, not only do you get the full info on the model, you also get wha
 
 ## Author
 Christofer Wikman 
+[![alt text][1.1]][1]
+[![alt text][2.1]][2]
+[![alt text][3.1]][3]
+[![alt text][4.1]][4]
+[![alt text][5.1]][5]
+[![alt text][6.1]][6]
 ## Sources
 [Sails.js](https://sailsjs.com/)
 
