@@ -116,15 +116,14 @@ Lets say someone would make a create on the Model User, then you would receive s
 How convenient, not only do you get the full info on the model, you also get what triggered the socket, in this case a create action.
 
 ## Author
-Christofer Wikman 
 [![Facebook](http://i.imgur.com/P3YfQoD.png)](https://www.facebook.com/christofer.wikman)
 [![Github](http://i.imgur.com/0o48UoR.png)](https://github.com/Edugolr)
-
+Christofer Wikman 
 
 
 
 ## Sources
 [Sails.js](https://sailsjs.com/)
-[Sitepoint(https://www.sitepoint.com/an-introduction-to-sails-js/)
+[Sitepoint](https://www.sitepoint.com/an-introduction-to-sails-js/)
 [Wikipedia](https://en.wikipedia.org/wiki/Sails.js
 
